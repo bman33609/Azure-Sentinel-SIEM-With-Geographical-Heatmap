@@ -39,72 +39,62 @@
 
 <p align="center">
 Spin up virtual machine: <br/>
-<img src="https://i.imgur.com/2vHExHT.png" height="80%" width="80%" alt="Vulnerability Scanning With Nessus"/>
+<img src="https://i.imgur.com/RSP1GTQ.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
   
 <br />
  Let's make the vm vulnerable to attacks by disabling all firewalls via Windows Defender: <br/>
-<img src="https://i.imgur.com/DTDOsMO.png" height="80%" width="80%" alt="Vulnerability Scanning With Nessus"/>
+<img src="https://i.imgur.com/hNnhlGQ.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 
 <br />
-  Next, let's download Nessus: <br/>
-<img src="https://i.imgur.com/TFmYmrI.png" height="80%" width="80%" alt="Vulnerability Scanning With Nessus"/>
+  Next, let's ping our vm from our host machine to make sure it's discoverable: <br/>
+<img src="https://i.imgur.com/2mc9g9t.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 
 <br />
-   Now that Nessus has been installed, we need to locate the vm's IP: <br/>
-<img src="https://i.imgur.com/3gRM2Qq.png" height="80%" width="80%" alt="Vulnerability Scanning With Nessus"/>
+   Now let's create the log analytics workspace: <br/>
+<img src="https://i.imgur.com/DIfXdkF.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 
 <br />
-Run a basic uncredentialed network scan against the target IP address:  <br/>
-<img src="https://i.imgur.com/TRzl709.png" height="80%" width="80%" alt="Vulnerability Scanning With Nessus"/>
+At this point we need to connect our log workspace to our vm:  <br/>
+<img src="https://i.imgur.com/v2MGvke.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 
 <br />
-View scan details:  <br/>
-<img src="https://i.imgur.com/wHA1mLL.png" height="80%" width="80%" alt="Vulnerability Scanning With Nessus"/>
+Now we need to setup defender to collect all events:  <br/>
+<img src="https://i.imgur.com/vUwQMWs.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 
 <br />
-Now, run a credentialed scan:  <br/>
-<img src="https://i.imgur.com/OPE30Ze.png" height="80%" width="80%" alt="Vulnerability Scanning With Nmap"/>
+Next, let's get a custom API key from ipgeolocation.io to feed into our powershell script:  <br/>
+<img src="https://i.imgur.com/QVTr23d.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 <br />
-Let's view all the vulnerabilities that were found:  <br/>
-<img src="https://i.imgur.com/AWfDkuI.png" height="80%" width="80%" alt="Vulnerability Scanning With Nmap"/>
+Now let's run the powershell script on our vm to automatically parse out our events to Azure. Look!, we can already see several failed RDP attacks!:  <br/>
+<img src="https://i.imgur.com/fI6HrRY.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 <br />
-Now, let's dive into one of the vulnerabilities that was found and see what we can learn about it:  <br/>
-<img src="https://i.imgur.com/qakL1PA.png" height="80%" width="80%" alt="Vulnerability Scanning With Nmap"/>
+Finally, we can create a sentinel workbook and use the data coming from our vm to create a heatmap of live attacks!:  <br/>
+<img src="https://i.imgur.com/iO6h10s.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 <br />
-Let's see what Nessus recommends us to do in order to mitigate these vulnerabilities:  <br/>
-<img src="https://i.imgur.com/Ji9FTv0.png" height="80%" width="80%" alt="Vulnerability Scanning With Nessus"/>
-<br />
-<br />
-Nessus suggests installing updates and re-enabling our firewalls so let's do that:  <br/>
-<img src="https://i.imgur.com/Gdrao50.png" height="80%" width="45%" alt="Vulnerability Scanning With Nessus"/>
+Here is the heatmap after only a few hours!:  <br/>
+<img src="https://i.imgur.com/g9Twdzu.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 
-<br />
-<img src="https://i.imgur.com/HGGz8nf.png" height="80%" width="45%" alt="Vulnerability Scanning With Nessus"/>
-<br />
 
-<br />
-Now, let's scan again to see if the vulnerabilities have been removed:  <br/>
-<img src="https://i.imgur.com/8Cb66dh.png" height="80%" width="80%" alt="Vulnerability Scanning With Nmap"/>
-<br />
 
 </p>
 
 <h2>Findings:</h2>
 
-- <b> Using Nessus can be instrumental in scanning a network device for various types of threats and vulnerablities.</b>
-- <b> Nessus is very customizable and makes it easy to optimize your scans for specific purposes in a timely fashion.</b>
-- <b> Credentialed scans are generally much more in depth and will help discover the majority of current vulnerabilities.</b>
-- <b> Nessus gives us a categorical breakdown of vulnerabilties and offers steps to remediate each type of vulnerabilty.</b>
-- <b> Upon diving into a particular vulnerability, Nessus will provide detailed information including port numbers, degree of severity, and many supportive reference links to assist in your investigations. In regards to the vulnerability shown above(SMB Signing Not 
-      Required), Nessus told us that an unauthenticated, remote attacker could exploit this via man-in-the-middle attack. To mitigate this, Nessus recommends us to enforce message signing in the host's configuartion.</b>
-- <b> In addition, Nessus recommended us to turn our firewalls back on and install all suggested updates on our virtual machine.
+- <b> A honeypot is a tool that can help detect, deflect, and counteract unauthorized access to computer systems and networks. By pretending to be a legitimate target, a honeypot can lure hackers into a controlled environment where their activities and behaviors can be 
+      monitored.</b>
+- <b> Honeypots can waste attackers' time and resources by providing false information or creating misleading environments. This can make it harder for attackers to succeed and may deter them from future attacks.</b>
+- <b> A honeypot or honeynet can divert attackers' attention away from valuable assets, giving security teams more time to respond to attacks.</b>
+- <b> Also, honeypots can help organizations identify vulnerabilities in their security systems by analyzing how attackers access the honeypot's data. This information can help organizations update their systems to block these attack methods.</b>
+- <b> Upon analyzing the event logs I discovered that the majority of the failed RDPs from Thailand came from a single user attempting to brute force the machine.</b>
+- <b> To mitigate these attacks from our vm we can turn all of our firewalls back on making the machine less discoverable. We could also reconfigure the vm to limit the amount of ports allowed.</b> 
+- <b> Finally, a honeypot is a fantastic tool to better understand the mind of a hacker, to develop a deeper understanding of their behaviors and can ultimately be extremely benficial to protect organizations along with their assets.</b> 
