@@ -3,8 +3,8 @@
 
 <h2>Description</h2>
 <p>In this project I created a honeypot with an Azure virtual machine. I then made the machine vulnerable to attacks by disabling firewalls and creating custom vm configuartions.
-   After setting up the vm, I created a log analytic workspace within Azure and connected it to the vm in order to capture all security events from the vm. 
-   I then ran a custom powershell script within the vm in order to parse out Windows Event Log information for failed RDP attempts and send them to the log analytic workspace in Azure. 
+   After setting up the vm, I created a log analytics workspace within Azure and connected it to the vm in order to capture all security events from the vm. 
+   I then ran a custom powershell script within the vm in order to parse out Windows Event Log information for failed RDP attempts and send them to the log analytics workspace in Azure. 
    Finally, I sent all the failed RDP events to a Sentinel workbook to generate a heatmap of live attacks from around the world.</p>
 
 
@@ -27,8 +27,8 @@
 - <b>Spin up virtual machine in Azure.</b> 
 - <b>Make vm vulnerable to attacks by disabling firewalls.</b>
 - <b>Ping vm from host to make sure machine is discoverable.</b>
-- <b>Create log workspace in Azure.</b> 
-- <b>Connect vm to log workspace.</b> 
+- <b>Create log analytics workspace in Azure.</b> 
+- <b>Connect vm to log analytics workspace.</b> 
 - <b>Generate API key for powershell script via ipgeolocation.io.</b>
 - <b>Run the powershell script</b>
 - <b>Create Sentinel Workbook.</b>
