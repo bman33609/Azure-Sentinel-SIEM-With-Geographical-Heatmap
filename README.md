@@ -73,7 +73,7 @@ Next, let's get a custom API key from ipgeolocation.io to feed into our powershe
 <br />
 <br />
 Now let's run the powershell script on our vm to automatically parse out our events to Azure. Look!, we can already see several failed RDP attacks!:  <br/>
-<img src="https://i.imgur.com/fI6HrRY.png" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
+<img src="" height="80%" width="80%" alt="Honeypot In Azure Sentinel With Geolocation Heatmap"/>
 <br />
 <br />
 Finally, we can create a sentinel workbook and use the data coming from our vm to create a heatmap of live attacks!:  <br/>
