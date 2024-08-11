@@ -1,4 +1,4 @@
-<h1>Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM</h1>
+<h1>Azure Sentinel (SIEM) With Geographical Heatmap</h1>
 
 
 <h2>Description</h2>
@@ -24,7 +24,7 @@
 
 <h2>Objectives:</h2>
 
-- <b>Spin up virtual machine in Azure.</b> 
+- <b>Spin up virtual machine (honeypot) in Azure.</b> 
 - <b>Make vm vulnerable to attacks by disabling firewalls.</b>
 - <b>Ping vm from host to make sure machine is discoverable.</b>
 - <b>Create log analytics workspace in Azure.</b> 
@@ -39,50 +39,50 @@
 
 <p align="center">
 Spin up virtual machine: <br/>
-<img src="https://i.imgur.com/RSP1GTQ.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/RSP1GTQ.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
   
 <br />
  Let's make the vm vulnerable to attacks by disabling all firewalls via Windows Defender: <br/>
-<img src="https://i.imgur.com/hNnhlGQ.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/hNnhlGQ.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 
 <br />
   Next, let's ping our vm from our host machine to make sure it's discoverable: <br/>
-<img src="https://i.imgur.com/2mc9g9t.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/2mc9g9t.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 
 <br />
    Now let's create the log analytics workspace: <br/>
-<img src="https://i.imgur.com/DIfXdkF.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/DIfXdkF.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 
 <br />
 At this point we need to connect our log workspace to our vm:  <br/>
-<img src="https://i.imgur.com/v2MGvke.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/v2MGvke.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 
 <br />
 Now we need to setup defender to collect all events:  <br/>
-<img src="https://i.imgur.com/vUwQMWs.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/vUwQMWs.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 
 <br />
 Next, let's get a custom API key from ipgeolocation.io to feed into our powershell script:  <br/>
-<img src="https://i.imgur.com/QVTr23d.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/QVTr23d.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 <br />
 Now let's run the powershell script on our vm to automatically parse out our events to Azure. Look!, we can already see several failed RDP attacks!:  <br/>
-<img src="https://i.imgur.com/MTD5AFt.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
-<img src="https://i.imgur.com/hPj4mAv.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/MTD5AFt.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
+<img src="https://i.imgur.com/hPj4mAv.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 <br />
 Finally, we can create a sentinel workbook and use the data coming from our vm to create a heatmap of live attacks!:  <br/>
-<img src="https://i.imgur.com/iO6h10s.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/iO6h10s.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 <br />
 Here is the heatmap after only a few hours!:  <br/>
-<img src="https://i.imgur.com/g9Twdzu.png" height="80%" width="80%" alt="Azure Sentinel(SIEM) With Geographical Heatmap And Honeypot VM"/>
+<img src="https://i.imgur.com/g9Twdzu.png" height="80%" width="80%" alt="Azure Sentinel (SIEM) With Geographical Heatmap"/>
 <br />
 
 
